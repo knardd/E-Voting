@@ -1,3 +1,32 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    /* --- FONT FAMILY --- */
+    --font-poppins: "Poppins", var(--font-sans);
+    --font-sans: "Inter", var(--font-sans);
+
+    /* --- COLORS --- */
+    /* Primary (Blue-600) */
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-primary-text: #ffffff;
+
+    /* Secondary (Blue-100) */
+    --color-secondary: #dbeafe;
+    --color-secondary-hover: #bfdbfe;
+    --color-secondary-text: #1e40af;
+
+    /* Success */
+    --color-success: #dcfce7;
+    --color-success-hover: #166534;
+
+    /* Danger */
+    --color-danger: #fef2f2;
+    --color-danger-hover: #b91c1c;
+
+    /* --- BOX SHADOW --- */
+    --shadow-notion: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-card-hover:
+        0 10px 25px -5px rgba(37, 99, 235, 0.08),
+        0 8px 10px -6px rgba(37, 99, 235, 0.08);
+}

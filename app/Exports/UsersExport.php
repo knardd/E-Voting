@@ -14,13 +14,12 @@ class UsersExport implements FromCollection, WithHeadings
     public function collection()
     {
         return User::where('role', 'siswa')
-        ->select('token', 'plain_password', 'role')
+        ->select('token', 'plain_password')
         ->get()
         ->map(function ($user) {
             return [
                 $user->token,
                 $user->plain_password,
-                $user->role,
             ];
         });
     }
@@ -30,7 +29,6 @@ class UsersExport implements FromCollection, WithHeadings
         return [
             'Token',
             'Password',
-            'Role'
         ];
     }
 }

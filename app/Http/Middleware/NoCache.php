@@ -22,6 +22,6 @@ class NoCache
         $response->headers->set('Pragma', 'no-cache');
         $response->headers->set('Expires', '0');
         
-        return $next($request);
+        return $response;
     }
 }
