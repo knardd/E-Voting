@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -26,7 +27,9 @@ class AuthController extends Controller
             return redirect()->route('candidate');
         }
 
-        return back()->with('login_error', 'Token atau password salah.');
+        throw ValidationException::withMessages([
+            'login_error' => 'Token atau password salah.',
+        ]);
     }
 
     public function logout(Request $request)

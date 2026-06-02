@@ -11,11 +11,11 @@ use Inertia\Inertia;
 class DashboardController extends Controller
 {
     protected $colorPalette = [
-        ['bg-blue-500', '#3b82f6'],   // Kandidat 1
-        ['bg-indigo-500', '#6366F1'], // Kandidat 2
-        ['bg-violet-500', '#8B5CF6'],   // Kandidat 3
-        ['bg-green-500', '#22C55E'],   // Kandidat 4
-        ['bg-amber-500', '#f59e0b'],  // Kandidat 5
+        '#E16A6A',    // Kandidat 1
+        '#FFB84D',    // Kandidat 2
+        '#3B82F6',    // Kandidat 3
+        '#22C55E',    // Kandidat 4
+        '#f59e0b',    // Kandidat 5
     ];
 
     public function index()
@@ -46,8 +46,7 @@ class DashboardController extends Controller
 
         foreach ($candidatesData as $index => $candidate) {
             $colorIndex = $index % count($this->colorPalette);
-            $colorClass = $this->colorPalette[$colorIndex][0];
-            $colorHex = $this->colorPalette[$colorIndex][1];
+            $colorHex = $this->colorPalette[$colorIndex];
 
             $percentage = $totalVotes > 0 
                 ? round(($candidate->votes_count / $totalVotes) * 100, 1) 
@@ -60,7 +59,6 @@ class DashboardController extends Controller
                 'votes' => $candidate->votes_count,
                 'percentage' => $percentage,
                 'height' => round($heightPercentage),
-                'color_class' => $colorClass,
                 'color_hex' => $colorHex,
             ];
 

@@ -8,7 +8,7 @@ export default function VoteSuccess({ candidate }) {
 
     return (
         <div className="min-h-screen bg-white font-sans text-slate-600 flex items-center justify-center p-4">
-            <Head title="Vote Berhasil" />
+            <Head title="Voting Berhasil" />
 
             <div className="max-w-md w-full bg-white border border-slate-100 rounded-2xl shadow-notion p-8 text-center space-y-8 animate-in zoom-in-95 duration-500">
                 {/* Success Icon */}
@@ -21,7 +21,7 @@ export default function VoteSuccess({ candidate }) {
                 </div>
 
                 <div className="space-y-2">
-                    <h1 className="font-poppins text-3xl font-bold text-slate-900">Vote Berhasil!</h1>
+                    <h1 className="font-poppins text-3xl font-bold text-slate-900">Voting Berhasil!</h1>
                     <p className="text-slate-500">Terima kasih telah berpartisipasi dalam pemilihan ini.</p>
                 </div>
 

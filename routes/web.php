@@ -10,9 +10,7 @@ use Inertia\Inertia;
 
 // Authentication Routes
 Route::get('/', function () {
-    return Inertia::render('Auth/Login', [
-        'login_error' => session('login_error')
-    ]);
+    return Inertia::render('Auth/Login');
 })->name('login');
 
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
