@@ -53,4 +53,27 @@ class User extends Authenticatable
     {
         return $this->hasOne(Vote::class);
     }
+
+    /**
+     * Generate a random token for user identification.
+     */
+    public static function generateToken($length = 6): string
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $token = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $token .= $characters[random_int(0, strlen($characters) - 1)];
+        }
+
+        return $token;
+    }
+
+    /**
+     * Generate a random numeric password.
+     */
+    public static function generatePassword(): string
+    {
+        return str_pad((string) random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+    }
 }

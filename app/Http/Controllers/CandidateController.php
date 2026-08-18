@@ -18,10 +18,6 @@ class CandidateController extends Controller
         
         return Inertia::render('CandidateList', [
             'candidates' => $candidates,
-            'flash' => [
-                'success' => session('success'),
-                'error' => session('error'),
-            ]
         ]);
     }
 
@@ -51,11 +47,7 @@ class CandidateController extends Controller
         if (!$user) {
             return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu');
         }
-
-        if ($user->has_voted) {
-            return redirect()->back()->with('error', 'Anda sudah melakukan voting sebelumnya');
-        }
-
+        
         try {
             DB::transaction(function () use ($request, $user) {
                 // Simpan vote
@@ -65,12 +57,10 @@ class CandidateController extends Controller
                 ]);
 
                 // Update status has_voted
-                DB::table('users')
-                    ->where('id', $user->id)
-                    ->update(['has_voted' => true, 'updated_at' => now()]);
+                $user->update(['has_voted' => true]);
             });
 
-            return redirect()->route('vote.success')->with('success', 'Vote berhasil disimpan!');
+            return redirect()->route('vote.success');
             
         } catch (\Exception $e) {
             Log::error('Voting Error: ' . $e->getMessage());

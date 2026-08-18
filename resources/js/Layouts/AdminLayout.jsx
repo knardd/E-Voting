@@ -46,7 +46,7 @@ export default function AdminLayout({ children }) {
                         className={`flex items-center px-4 py-3 rounded-xl transition-all font-medium text-sm ${isActive("/admin/create-user") ? "bg-secondary text-secondary-text " : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"}`}
                     >
                         <Icon.Users className="w-5 h-5 mr-3" />
-                        Kelola Pemilih
+                        Pemilih
                     </Link>
 
                     <Link
@@ -54,14 +54,14 @@ export default function AdminLayout({ children }) {
                         className={`flex items-center px-4 py-3 rounded-xl transition-all font-medium text-sm ${isActive("/admin/create-candidate") ? "bg-secondary text-secondary-text" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"}`}
                     >
                         <Icon.Candidate className="w-5 h-5 mr-3" />
-                        Kelola Kandidat
+                        Kandidat
                     </Link>
                 </nav>
 
                 <div className="p-4 border-t border-slate-50">
                     <button
                         onClick={handleLogout}
-                        className="flex items-center px-4 py-3 text-danger-hover hover:bg-danger rounded-xl transition-all font-bold text-sm w-full"
+                        className="flex items-center px-4 py-3 text-danger-hover bg-danger hover:bg-red-200 rounded-xl transition-all font-bold text-sm w-full"
                     >
                         <Icon.Logout className="w-5 h-5 mr-3" />
                         Keluar

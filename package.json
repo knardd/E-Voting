@@ -16,6 +16,7 @@
     "dependencies": {
         "@inertiajs/react": "^3.3.0",
         "@vitejs/plugin-react": "^5.2.0",
+        "aos": "^2.3.4",
         "react": "^19.2.6",
         "react-dom": "^19.2.6",
         "recharts": "^3.8.1",

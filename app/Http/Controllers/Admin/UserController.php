@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Exports\UsersExport;
+use App\Http\Resources\UserResource;
 use Maatwebsite\Excel\Facades\Excel;
 use Inertia\Inertia;
 
@@ -14,12 +15,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::orderBy('id', 'asc')->get()->map(function ($user) {
-            return [
-                'token' => $user->token,
-                'password' => $user->plain_password ?? '******',
-            ];
-        });
+        //Ascending (berurutan dari kecil ke besar)
+        $users = UserResource::collection(
+            User::orderBy('id', 'asc')->get()
+        );
 
         return Inertia::render('Admin/CreateUser', [
             'users' => $users,
@@ -33,8 +32,8 @@ class UserController extends Controller
         ]);
 
         for ($i = 0; $i < $request->jumlah_user; $i++) {
-            $token = $this->generateToken();
-            $password = $this->generatePassword();
+            $token = User::generateToken();
+            $password = User::generatePassword();
 
             User::create([
                 'token' => $token,
@@ -49,22 +48,5 @@ class UserController extends Controller
     public function export()
     {
         return Excel::download(new UsersExport, 'users.xlsx');
-    }
-
-    private function generateToken($length = 6)
-    {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $token = '';
-
-        for ($i = 0; $i < $length; $i++) {
-            $token .= $characters[random_int(0, strlen($characters) - 1)];
-        }
-
-        return $token;
-    }
-
-    private function generatePassword()
-    {
-        return str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
     }
 }

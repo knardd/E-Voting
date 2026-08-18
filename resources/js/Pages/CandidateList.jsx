@@ -1,22 +1,15 @@
 import React, { useState } from "react";
 import { Head, router } from "@inertiajs/react";
+import Icon from "@/Components/Icons";
 
 export default function CandidateList({ candidates, flash }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedCandidate, setSelectedCandidate] = useState(null);
 
     const handleVote = (candidateId) => {
-        router.post(
-            "/vote",
-            {
-                candidate_id: candidateId,
-            },
-            {
-                onSuccess: () => {
-                    setIsModalOpen(false);
-                },
-            },
-        );
+        router.post("/vote", {
+            candidate_id: candidateId,
+        });
     };
 
     return (
@@ -25,7 +18,7 @@ export default function CandidateList({ candidates, flash }) {
 
             {/* Hero Section */}
             <div className="bg-primary text-white py-20 px-4 text-center">
-                <div className="max-w-4xl mx-auto">
+                <div data-aos="fade-up" className="max-w-4xl mx-auto">
                     <img
                         src="/storage/osis2.png"
                         className="rounded-full w-20 h-20 mx-auto mb-8 border-2 border-white/20 p-1 bg-white/10"
@@ -36,7 +29,7 @@ export default function CandidateList({ candidates, flash }) {
                         PEMILIHAN KETUA OSIS
                     </h1>
                     <h2 className="font-poppins text-2xl md:text-3xl font-bold opacity-90 mb-8">
-                        MASA BAKTI 2025/2026
+                        MASA BAKTI 2026/2027
                     </h2>
                     <p className="text-lg opacity-80 max-w-2xl mx-auto">
                         Suara Anda Menentukan Masa Depan Sekolah Ini. Pilih
@@ -48,29 +41,35 @@ export default function CandidateList({ candidates, flash }) {
             {/* Voting Rules */}
             <div className="py-20 px-4 bg-slate-50">
                 <div className="max-w-6xl mx-auto">
-                    <h2 className="font-poppins text-3xl font-bold text-center text-slate-900 mb-12">
+                    <h2
+                        data-aos="fade-up"
+                        className="font-poppins text-3xl font-bold text-center text-slate-900 mb-12"
+                    >
                         Aturan Voting
                     </h2>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div
+                        data-aos="fade-up"
+                        className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+                    >
                         {[
                             {
-                                icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z",
+                                Icon: Icon.Lock,
                                 title: "Tidak Bisa Diubah",
                                 desc: "Voting tidak bisa diubah kembali setelah dikonfirmasi",
                             },
                             {
-                                icon: "M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11",
+                                Icon: Icon.Hand,
                                 title: "Satu Kali Kesempatan",
                                 desc: "Setiap pemilih hanya diberikan satu kali kesempatan",
                             },
                             {
-                                icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+                                Icon: Icon.Document,
                                 title: "Baca Visi & Misi",
                                 desc: "Pastikan membaca visi misi setiap kandidat",
                             },
                             {
-                                icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+                                Icon: Icon.ShieldCheck,
                                 title: "Data Terjaga",
                                 desc: "Data Anda akan dijaga kerahasiaannya",
                             },
@@ -80,19 +79,7 @@ export default function CandidateList({ candidates, flash }) {
                                 className="bg-white p-8 rounded-2xl border border-slate-100 shadow-notion hover:shadow-card-hover transition-all duration-300 group hover:-translate-y-1"
                             >
                                 <div className="w-14 h-14 bg-gradient-to-r from-primary to-indigo-600 rounded-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-lg shadow-primary/20">
-                                    <svg
-                                        className="w-8 h-8 text-white"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d={rule.icon}
-                                        ></path>
-                                    </svg>
+                                    <rule.Icon className="w-8 h-8 text-white" />
                                 </div>
                                 <h3 className="font-poppins font-bold text-slate-900 mb-2">
                                     {rule.title}
@@ -109,7 +96,7 @@ export default function CandidateList({ candidates, flash }) {
             {/* Candidate List */}
             <div className="py-24 px-4">
                 <div className="max-w-5xl mx-auto">
-                    <div className="text-center mb-20">
+                    <div data-aos="fade-up" className="text-center mb-20">
                         <h2 className="font-poppins text-3xl font-bold text-slate-900 mb-4">
                             Pengenalan Kandidat
                         </h2>
@@ -123,6 +110,9 @@ export default function CandidateList({ candidates, flash }) {
                         {candidates.map((candidate, index) => (
                             <div
                                 key={candidate.id}
+                                data-aos={
+                                    index % 2 === 1 ? "fade-left" : "fade-right"
+                                }
                                 className={`flex flex-col md:flex-row gap-12 items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}
                             >
                                 <div className="w-full md:w-1/2">
@@ -179,7 +169,10 @@ export default function CandidateList({ candidates, flash }) {
             </div>
 
             {/* CTA Footer */}
-            <footer className="bg-slate-900 py-20 text-center px-4">
+            <footer
+                data-aos="fade-up"
+                className="bg-slate-900 py-20 text-center px-4"
+            >
                 <div className="max-w-2xl mx-auto space-y-8">
                     <h3 className="font-poppins text-2xl font-bold text-white">
                         Siap memberikan suara Anda?
@@ -212,19 +205,7 @@ export default function CandidateList({ candidates, flash }) {
                                 onClick={() => setIsModalOpen(false)}
                                 className="text-slate-400 hover:text-slate-600"
                             >
-                                <svg
-                                    className="w-6 h-6"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    ></path>
-                                </svg>
+                                <Icon.X className="w-6 h-6" />
                             </button>
                         </div>
 
@@ -260,28 +241,6 @@ export default function CandidateList({ candidates, flash }) {
                             ))}
                         </div>
                     </div>
-                </div>
-            )}
-
-            {/* Flash Messages */}
-            {(flash.success || flash.error) && (
-                <div className="fixed bottom-8 right-8 z-[60] space-y-4">
-                    {flash.success && (
-                        <div className="bg-success px-6 py-4 rounded-xl border border-success-hover/10 shadow-lg flex items-center space-x-3 animate-in slide-in-from-right-8">
-                            <div className="w-2 h-2 rounded-full bg-success-hover"></div>
-                            <span className="text-success-hover font-bold text-sm">
-                                {flash.success}
-                            </span>
-                        </div>
-                    )}
-                    {flash.error && (
-                        <div className="bg-danger px-6 py-4 rounded-xl border border-danger-hover/10 shadow-lg flex items-center space-x-3 animate-in slide-in-from-right-8">
-                            <div className="w-2 h-2 rounded-full bg-danger-hover"></div>
-                            <span className="text-danger-hover font-bold text-sm">
-                                {flash.error}
-                            </span>
-                        </div>
-                    )}
                 </div>
             )}
         </div>

@@ -1,9 +1,10 @@
-import React from 'react';
-import { Head, router } from '@inertiajs/react';
+import React from "react";
+import { Head, router } from "@inertiajs/react";
+import Icon from "@/Components/Icons";
 
 export default function VoteSuccess({ candidate }) {
     const handleLogout = () => {
-        router.post('/logout');
+        router.post("/logout");
     };
 
     return (
@@ -14,21 +15,27 @@ export default function VoteSuccess({ candidate }) {
                 {/* Success Icon */}
                 <div className="flex justify-center">
                     <div className="w-24 h-24 bg-success rounded-full flex items-center justify-center">
-                        <svg className="w-12 h-12 text-success-hover" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
-                        </svg>
+                        <Icon.Check className="w-12 h-12 text-success-hover" />
                     </div>
                 </div>
 
                 <div className="space-y-2">
-                    <h1 className="font-poppins text-3xl font-bold text-slate-900">Voting Berhasil!</h1>
-                    <p className="text-slate-500">Terima kasih telah berpartisipasi dalam pemilihan ini.</p>
+                    <h1 className="font-poppins text-3xl font-bold text-slate-900">
+                        Voting Berhasil!
+                    </h1>
+                    <p className="text-slate-500">
+                        Terima kasih telah berpartisipasi dalam pemilihan ini.
+                    </p>
                 </div>
 
                 {candidate && (
                     <div className="bg-secondary/10 p-6 rounded-xl border border-secondary/20 space-y-3">
-                        <span className="text-xs font-bold text-secondary-text uppercase tracking-widest">Kandidat Terpilih</span>
-                        <p className="font-poppins text-xl font-bold text-slate-900">{candidate.name}</p>
+                        <span className="text-xs font-bold text-secondary-text uppercase tracking-widest">
+                            Kandidat Terpilih
+                        </span>
+                        <p className="font-poppins text-xl font-bold text-slate-900">
+                            {candidate.name}
+                        </p>
                     </div>
                 )}
 
@@ -38,7 +45,7 @@ export default function VoteSuccess({ candidate }) {
                     </p>
                 </div>
 
-                <button 
+                <button
                     onClick={handleLogout}
                     className="w-full bg-primary hover:bg-primary-hover text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-primary/20"
                 >
@@ -46,7 +53,7 @@ export default function VoteSuccess({ candidate }) {
                 </button>
 
                 <p className="text-xs text-slate-450 tracking-widest uppercase">
-                    © 2025 BlueSphere E-Voting
+                    © 2025 E-Voting
                 </p>
             </div>
         </div>

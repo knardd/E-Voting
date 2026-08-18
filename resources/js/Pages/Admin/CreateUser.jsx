@@ -78,7 +78,7 @@ export default function CreateUser({ users }) {
                 </div>
 
                 {/* Users Table */}
-                {users.length > 0 && (
+                {users.data && users.data.length > 0 && (
                     <div className="bg-white rounded-2xl border border-slate-100 shadow-notion overflow-hidden">
                         <div className="p-8 border-b border-slate-50 flex justify-between items-center">
                             <h3 className="font-poppins font-bold text-slate-900">
@@ -108,7 +108,7 @@ export default function CreateUser({ users }) {
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-slate-50">
-                                    {users.map((user, index) => (
+                                    {users.data.map((user, index) => (
                                         <tr
                                             key={index}
                                             className="hover:bg-slate-50/50 transition-colors"

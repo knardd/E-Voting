@@ -17,9 +17,14 @@ class NoCache
     {
         $response = $next($request);
 
-        // Tambahkan header anti-cache
+        //no-store & no-cache: Melarang browser menyimpan halaman & wajib validasi ke server.
+        //must-revalidate: Memastikan browser memeriksa ulang ke server jika ada cache tersisa.
         $response->headers->set('Cache-Control', 'no-cache, no-store, must-revalidate');
+
+        //Pragma: Fallback anti-cache untuk browser jadul (HTTP/1.0 / Internet Explorer).
         $response->headers->set('Pragma', 'no-cache');
+
+        //Expires: Set status konten langsung kedaluwarsa (basi) di detik itu juga.
         $response->headers->set('Expires', '0');
         
         return $response;
