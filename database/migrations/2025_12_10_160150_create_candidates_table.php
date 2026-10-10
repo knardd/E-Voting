@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('candidate_number')->unique();
             $table->string('name');
             $table->text('visi');
             $table->text('misi');
-            $table->string('photo');
+            $table->string('photo')->nullable();
+            $table->unsignedBigInteger('vote_count')->default(0);
             $table->timestamps();
         });
     }

@@ -2,19 +2,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Candidate extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
+        'candidate_number',
         'name',
         'visi',
         'misi',
         'photo',
+        'vote_count',
     ];
 
-    public function votes()
+    protected function casts(): array
     {
-        return $this->hasMany(Vote::class);
+        return [
+            'candidate_number' => 'integer',
+            'vote_count' => 'integer',
+        ];
     }
 }

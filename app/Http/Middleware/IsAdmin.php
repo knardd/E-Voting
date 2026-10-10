@@ -11,13 +11,20 @@ class IsAdmin
 {
     /**
      * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role === 'admin') {
-            return $next($request);
+        if (!Auth::check()) {
+            return redirect()->route('admin.login');
         }
 
-        return redirect()->route('login')->with('error', 'Unauthorized access');
+        if (Auth::user()->role !== 'admin') {
+            Auth::logout();
+            return redirect()->route('admin.login')->with('error', 'Akses ditolak. Anda bukan administrator.');
+        }
+
+        return $next($request);
     }
 }

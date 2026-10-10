@@ -1,42 +1,53 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
-    /* --- FONT FAMILY --- */
-    --font-poppins: "Poppins", var(--font-sans);
-    --font-sans: "Inter", var(--font-sans);
+    --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-    /* --- COLORS --- */
-    /* Primary (Blue-600) */
-    --color-primary: #2563eb;
-    --color-primary-hover: #1d4ed8;
-    --color-primary-text: #ffffff;
+    /* Minimalist Blue & White Palette */
+    --color-brand-50: #eff6ff;
+    --color-brand-100: #dbeafe;
+    --color-brand-200: #bfdbfe;
+    --color-brand-300: #93c5fd;
+    --color-brand-400: #60a5fa;
+    --color-brand-500: #3b82f6;
+    --color-brand-600: #2563eb;
+    --color-brand-700: #1d4ed8;
+    --color-brand-800: #1e40af;
+    --color-brand-900: #1e3a8a;
+    --color-brand-950: #172554;
+}
 
-    /* Secondary (Blue-100) */
-    --color-secondary: #dbeafe;
-    --color-secondary-hover: #bfdbfe;
-    --color-secondary-text: #1e40af;
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        font-family: var(--font-sans);
+        background-color: #f8fafc;
+        color: #1e293b;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
 
-    /* Success */
-    --color-success: #dcfce7;
-    --color-success-hover: #166534;
+/* Scanner pulse radar animation */
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+}
 
-    /* Danger */
-    --color-danger: #fef2f2;
-    --color-danger-hover: #b91c1c;
-
-    /* Warning (Amber) */
-    --color-warning: #fef3c7;
-    --color-warning-hover: #92400e;
-
-    /* Info (Sky) */
-    --color-info: #e0f2fe;
-    --color-info-hover: #0369a1;
-
-    /* --- BOX SHADOW --- */
-    --shadow-notion: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-card-hover:
-        0 10px 25px -5px rgba(37, 99, 235, 0.08),
-        0 8px 10px -6px rgba(37, 99, 235, 0.08);
+.animate-pulse-ring {
+    animation: pulse-ring 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

@@ -64,10 +64,21 @@ services:
     networks:
       - laravel
 
+  # 5. Service Redis
+  redis:
+    image: redis:alpine
+    container_name: laravel_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - laravel
+
 networks:
   laravel:
     driver: bridge
 
 volumes:
   mysql-data:
-    driver: local
+  redis-data:

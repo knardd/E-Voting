@@ -2,32 +2,38 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Voter;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class HasNotVoted
 {
     /**
-     * Handle an incoming request.
+     * Handle an incoming request for the voting booth.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-    $user = Auth::user();
-    // Kalau belum login
-    if (!$user) {
-        return redirect()->route('login');
-    }
+        $voterId = $request->session()->get('voter_id');
 
-    // Kalau sudah voting
-        if (Auth::check() && Auth::user()->has_voted) {
-        abort(403, 'Anda sudah melakukan voting');
-        // atau redirect
-    }
+        if (!$voterId) {
+            return redirect()->route('booth')->with('error', 'Silakan scan kartu atau masukkan token terlebih dahulu.');
+        }
 
-    return $next($request);
+        $voter = Voter::find($voterId);
+
+        if (!$voter) {
+            $request->session()->forget(['voter_id', 'voter']);
+            return redirect()->route('booth')->with('error', 'Data pemilih tidak ditemukan.');
+        }
+
+        if ($voter->status_voted) {
+            $request->session()->forget(['voter_id', 'voter']);
+            return redirect()->route('booth')->with('error', "Pemilih {$voter->name} sudah menggunakan hak pilih.");
+        }
+
+        return $next($request);
     }
 }

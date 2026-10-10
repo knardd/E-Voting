@@ -5,40 +5,60 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Inertia\Inertia;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    /**
+     * Tampilkan form login Administrator.
+     */
+    public function showAdminLogin()
+    {
+        if (Auth::check() && Auth::user()->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
+
+        return Inertia::render('Admin/Login');
+    }
+
+    /**
+     * Proses login Administrator.
+     */
+    public function adminLogin(Request $request)
     {
         $credentials = $request->validate([
-            'token' => 'required',
-            'password' => 'required',
+            'username' => 'required|string',
+            'password' => 'required|string',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            $user = Auth::user();
-
-            if ($user->role === 'admin') {
-                return redirect()->route('admin.dashboard');
+            if (Auth::user()->role === 'admin') {
+                return redirect()->intended(route('admin.dashboard'));
             }
 
-            return redirect()->route('candidate');
+            Auth::logout();
+            throw ValidationException::withMessages([
+                'username' => 'Akun Anda tidak memiliki hak akses administrator.',
+            ]);
         }
 
         throw ValidationException::withMessages([
-            'login_error' => 'Token atau password salah.',
+            'username' => 'Username atau password yang dimasukkan salah.',
         ]);
     }
 
-    public function logout(Request $request)
+    /**
+     * Proses logout Administrator.
+     */
+    public function adminLogout(Request $request)
     {
         Auth::logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        return redirect()->route('admin.login');
     }
 }
