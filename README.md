@@ -29,23 +29,32 @@ Aplikasi web pemilihan Ketua & Wakil Ketua OSIS berbasis Laravel dan React (Iner
 
 ### Bilik Suara (Pemilih)
 
-|        Standby (Scan QR / Input Token)        |            Halaman Info & Aturan             |
-| :-------------------------------------------: | :------------------------------------------: |
-| ![Standby Bilik Suara](screenshots/Login.png) | ![Halaman Pemilih](screenshots/Kandidat.png) |
+#### 1. Standby (Scan QR / Input Token Manual)
+![Standby Bilik Suara](screenshots/Login.png)
 
-|              Daftar Paslon & Coblos               |               Konfirmasi Berhasil               |
-| :-----------------------------------------------: | :---------------------------------------------: |
-| ![Pilih Paslon](screenshots/Pilih%20Kandidat.png) | ![Sukses Voting](screenshots/Vote%20Succes.png) |
+#### 2. Informasi Pemilih & Aturan Pemilihan
+![Halaman Pemilih](screenshots/Kandidat.png)
+
+#### 3. Daftar Paslon & Pemilihan (Coblos)
+![Pilih Paslon](screenshots/Pilih%20Kandidat.png)
+
+#### 4. Konfirmasi Berhasil Memilih
+![Sukses Voting](screenshots/Vote%20Succes.png)
 
 ### Panel Administrator
 
-|                  Login Admin                  |         Dashboard & Quick Count         |
-| :-------------------------------------------: | :-------------------------------------: |
-| ![Login Admin](screenshots/Login%20Admin.png) | ![Dashboard](screenshots/Dashboard.png) |
+#### 1. Login Administrator
+![Login Admin](screenshots/Login%20Admin.png)
 
-|              Manajemen Paslon               |                  Manajemen DPT                  |
-| :-----------------------------------------: | :---------------------------------------------: |
-| ![Data Calon](screenshots/Data%20Calon.png) | ![Data Pemilih](screenshots/Data%20Pemilih.png) |
+#### 2. Dashboard & Quick Count Real-Time
+![Dashboard](screenshots/Dashboard.png)
+
+#### 3. Manajemen Pasangan Calon
+![Data Calon](screenshots/Data%20Calon.png)
+
+#### 4. Manajemen Daftar Pemilih Tetap (DPT)
+![Data Pemilih](screenshots/Data%20Pemilih.png)
+
 
 ---
 
