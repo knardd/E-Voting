@@ -25,39 +25,6 @@ Aplikasi web pemilihan Ketua & Wakil Ketua OSIS berbasis Laravel dan React (Iner
 
 ---
 
-## 📸 Tangkapan Layar
-
-### Bilik Suara (Pemilih)
-
-#### 1. Standby (Scan QR / Input Token Manual)
-![Standby Bilik Suara](screenshots/Login.png)
-
-#### 2. Informasi Pemilih & Aturan Pemilihan
-![Halaman Pemilih](screenshots/Kandidat.png)
-
-#### 3. Daftar Paslon & Pemilihan (Coblos)
-![Pilih Paslon](screenshots/Pilih%20Kandidat.png)
-
-#### 4. Konfirmasi Berhasil Memilih
-![Sukses Voting](screenshots/Vote%20Succes.png)
-
-### Panel Administrator
-
-#### 1. Login Administrator
-![Login Admin](screenshots/Login%20Admin.png)
-
-#### 2. Dashboard & Quick Count Real-Time
-![Dashboard](screenshots/Dashboard.png)
-
-#### 3. Manajemen Pasangan Calon
-![Data Calon](screenshots/Data%20Calon.png)
-
-#### 4. Manajemen Daftar Pemilih Tetap (DPT)
-![Data Pemilih](screenshots/Data%20Pemilih.png)
-
-
----
-
 ## 🚀 Panduan Instalasi
 
 1. **Clone repository & install dependencies**:
@@ -117,6 +84,46 @@ Aplikasi web pemilihan Ketua & Wakil Ketua OSIS berbasis Laravel dan React (Iner
 | `1003` | `MKVCUW` | Muhammad Fajar      | XI IPS 1   |
 | `1004` | `U3FPVN` | Dewi Lestari        | X-A        |
 | `1005` | `9GLK9S` | Budi Santoso, S.Pd. | Dewan Guru |
+
+---
+
+## 📸 Tangkapan Layar
+
+### Bilik Suara (Pemilih)
+
+#### 1. Standby (Scan QR / Input Token Manual)
+
+![Standby Bilik Suara](screenshots/Login.png)
+
+#### 2. Informasi Pemilih & Aturan Pemilihan
+
+![Halaman Pemilih](screenshots/Kandidat.png)
+
+#### 3. Daftar Paslon & Pemilihan (Coblos)
+
+![Pilih Paslon](screenshots/Pilih%20Kandidat.png)
+
+#### 4. Konfirmasi Berhasil Memilih
+
+![Sukses Voting](screenshots/Vote%20Succes.png)
+
+### Panel Administrator
+
+#### 1. Login Administrator
+
+![Login Admin](screenshots/Login%20Admin.png)
+
+#### 2. Dashboard & Quick Count Real-Time
+
+![Dashboard](screenshots/Dashboard.png)
+
+#### 3. Manajemen Pasangan Calon
+
+![Data Calon](screenshots/Data%20Calon.png)
+
+#### 4. Manajemen Daftar Pemilih Tetap (DPT)
+
+![Data Pemilih](screenshots/Data%20Pemilih.png)
 
 ---
 
